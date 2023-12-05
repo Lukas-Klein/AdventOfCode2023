@@ -23,29 +23,16 @@ func getPoints(myNumbers []string, winningNumbers []string) int {
 	return points
 }
 
-func part2(myNumbers []string, winningNumbers []string) int {
-	points := 0
-	for _, number := range myNumbers {
-		if number != "" {
-			if slices.Contains(winningNumbers, number) {
-				points++
-			}
-		}
-	}
-	return points
-}
-
 func main() {
 	file, err := os.ReadFile("input.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		// fmt.Println("Error opening file:", err)
 		return
 	}
-	fmt.Println("File opened successfully")
 	input := string(file)
-	fmt.Println(string(file))
 
 	for _, line := range strings.Split(input, "\n") {
+		// // fmt.Println("Line:", line)
 		// Split the line using ": " as a delimiter
 		parts := strings.Split(line, ": ")
 		if len(parts) != 2 {
@@ -63,13 +50,9 @@ func main() {
 
 		winnerNumbers := strings.Split(numbers[0], " ")
 		myNumbers := strings.Split(numbers[1], " ")
-		fmt.Println("Winner:", winnerNumbers)
-		fmt.Println("Mine:", myNumbers)
 
-		points := part2(myNumbers, winnerNumbers)
-		for i := 1; i < points; i++ {
-			// input = input +
-		}
+		points := getPoints(myNumbers, winnerNumbers)
+		fmt.Println(points)
+
 	}
-
 }
